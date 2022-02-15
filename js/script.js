@@ -6,6 +6,25 @@ onClick("ssd1", "storage-cost", 0);
 onClick("paid-delivery", "delivery-cost", 20);
 onClick("free-delivery", "delivery-cost", 0);
 
+document.getElementById("apply-btn").addEventListener('click', function () {
+    const cuppon = document.getElementById('promo-input');
+    if (cuppon.value === 'hero20') {
+        const totalCost = document.getElementById("total-price");
+        const totalCostFloat = parseFloat(totalCost.innerText);
+        console.log(totalCost);
+        console.log(totalCostFloat);
+        totalCost.innerText = totalCostFloat - totalCostFloat * 0.2;
+        document.getElementById('apply-btn').disabled = 'true';
+        document.getElementById('apply-btn').style.setProperty('background', 'blue', 'important');
+        document.getElementById('applied-text').style.setProperty('display', 'block', 'important');
+        document.getElementById('applied2-text').style.setProperty('display', 'none', 'important');
+
+    } else {
+        document.getElementById('applied2-text').style.setProperty('display', 'block', 'important');
+        document.getElementById('applied-text').style.setProperty('display', 'none', 'important');
+    }
+})
+
 
 
 function onClick(clickID, updateID, price) {
